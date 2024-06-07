@@ -9,6 +9,9 @@ import UIKit
 import SnapKit
 
 class DamagochiModalViewController: UIViewController {
+    var userName: String?
+    var data: Damagochi?
+    
     let backgroundView = UIView()
     
     let modalView = UIView()
@@ -27,7 +30,6 @@ class DamagochiModalViewController: UIViewController {
         configureBackView()
         configureModalView()
     }
-    
     
 }
 
@@ -99,10 +101,8 @@ extension DamagochiModalViewController {
         modalView.backgroundColor = UIColor._appBackGroundColor
         modalView.layer.cornerRadius = 12
         
-        modalImage.image = UIImage(named: "1-1")
         modalImage.contentMode = .scaleAspectFit
         
-        modalName.text = ""
         modalName.textAlignment = .center
         modalName.font = UIFont._appSystemFontM
         modalName.layer.borderColor = UIColor._appSystemFontColor.cgColor
@@ -116,7 +116,6 @@ extension DamagochiModalViewController {
         modalButtonDivider.layer.borderColor = UIColor._appSystemFontColor.cgColor
         
         modalDescription.numberOfLines = 0
-        modalDescription.text = "저는 방실방실 다마고치입니당 키는 100km\n 몸무게는 150톤이에용\n 성격은 화끈하고 날라다닙니당~!\n 열심히 잘 먹고 잘 클 자신은\n 있답니당 방실방실!"
         modalDescription.textAlignment = .center
         modalDescription.font = UIFont._appSystemFontM
         modalDescription.textColor = UIColor._appSystemFontColor
@@ -147,9 +146,23 @@ extension DamagochiModalViewController {
     
     @objc func goThatDetailPage() {
         let vc = DamagochiDetailViewController()
+        if let data, let userName {
+            vc.setData(name: userName, pageData: data)
+        }
+        
         let navc = UINavigationController(rootViewController: vc)
         navc.modalPresentationStyle = .fullScreen
         
         present(navc, animated: false)
+    }
+    
+    func setData(_ cellData: Damagochi) {
+        data = cellData
+        
+        if let data {
+            modalImage.image = UIImage(named: data.getDamagochiImage)
+            modalName.text = data.name
+            modalDescription.text = data.descript
+        }
     }
 }

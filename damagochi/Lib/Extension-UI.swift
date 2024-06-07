@@ -23,3 +23,30 @@ extension UIFont {
     static let _appSystemBoldFontL = UIFont.boldSystemFont(ofSize: 15)
 }
     
+extension UIButton {
+    func _setEatingButton(_ title: String) {
+        self.tintColor = UIColor._appSystemFontColor
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(UIColor._appSystemFontColor, for: .normal)
+        self.setImage(UIImage(systemName: Icons.eatLeaf.rawValue), for: .normal)
+        self.titleLabel?.font = UIFont._appSystemFontS
+        self.backgroundColor = UIColor._appBackGroundColor
+        self.layer.cornerRadius = 8
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor._appSystemFontColor.cgColor
+    }
+}
+
+extension UITextField {
+    func _setEatingField(_ placeholder: String) {
+        let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+        self.leftView = paddingView
+        self.leftViewMode = ViewMode.always
+        self.placeholder = placeholder
+        self.keyboardType = .numberPad
+        self.layer.borderWidth = 1
+        self.layer.borderColor = UIColor._appSystemFontColor.cgColor
+        self.layer.cornerRadius = 8
+        self.font = UIFont._appSystemFontS        
+    }
+}

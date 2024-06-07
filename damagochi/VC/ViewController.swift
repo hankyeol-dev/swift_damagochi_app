@@ -29,10 +29,13 @@ class ViewController: UIViewController {
         
         configureDamagochiCollectionView()
         getOrSaveUserData()
-        print(user)
     }
     
     
+    
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func configureDamagochiCollectionView() {
         view.addSubview(damagochiCollection)
                 
@@ -43,9 +46,7 @@ class ViewController: UIViewController {
             c.edges.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
-}
-
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let user else { return 0}
         return user.damagochies.count
@@ -61,9 +62,16 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = DamagochiModalViewController()        
-        vc.modalPresentationStyle = .overFullScreen
-        present(vc, animated: false)
+        let vc = DamagochiModalViewController()
+        
+        if let user {
+            if user.damagochies[indexPath.row].isOpened {
+                vc.userName = user.name
+                vc.setData(user.damagochies[indexPath.row])
+                vc.modalPresentationStyle = .overFullScreen
+                present(vc, animated: false)
+            }
+        }
     }
 }
 
@@ -84,9 +92,5 @@ extension ViewController {
             }
         }
     }
-    
-    func setUser() {
-        
-        
-    }
+
 }

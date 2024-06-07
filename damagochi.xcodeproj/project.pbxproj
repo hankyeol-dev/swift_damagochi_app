@@ -15,12 +15,16 @@
 		811D80782C1283C9008620D5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 811D80772C1283C9008620D5 /* README.md */; };
 		811D807B2C12851F008620D5 /* Extension-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D807A2C12851F008620D5 /* Extension-UI.swift */; };
 		811D807D2C128754008620D5 /* Enum-Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D807C2C128754008620D5 /* Enum-Icons.swift */; };
-		811D80802C128A44008620D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D807F2C128A44008620D5 /* MainViewController.swift */; };
+		811D80802C128A44008620D5 /* DamagochiModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D807F2C128A44008620D5 /* DamagochiModalViewController.swift */; };
 		811D80832C128B42008620D5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 811D80822C128B42008620D5 /* SnapKit */; };
 		811D80852C128D0D008620D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80842C128D0D008620D5 /* Constants.swift */; };
 		811D80882C128FCE008620D5 /* DamagochiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80872C128FCE008620D5 /* DamagochiCell.swift */; };
 		811D808A2C1293D8008620D5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 811D80892C1293D8008620D5 /* .gitignore */; };
 		811D808C2C12A513008620D5 /* Extension-IdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D808B2C12A513008620D5 /* Extension-IdentifierProtocol.swift */; };
+		811D80912C12C54B008620D5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80902C12C54B008620D5 /* UserDefaults.swift */; };
+		811D80952C12D0B3008620D5 /* Helper-UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80942C12D0B3008620D5 /* Helper-UserDefaults.swift */; };
+		811D80972C12D3D0008620D5 /* DamagochiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80962C12D3D0008620D5 /* DamagochiDetailViewController.swift */; };
+		811D80992C12E265008620D5 /* Helper-generateDamagochi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80982C12E265008620D5 /* Helper-generateDamagochi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,11 +38,15 @@
 		811D80772C1283C9008620D5 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		811D807A2C12851F008620D5 /* Extension-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-UI.swift"; sourceTree = "<group>"; };
 		811D807C2C128754008620D5 /* Enum-Icons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum-Icons.swift"; sourceTree = "<group>"; };
-		811D807F2C128A44008620D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		811D807F2C128A44008620D5 /* DamagochiModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagochiModalViewController.swift; sourceTree = "<group>"; };
 		811D80842C128D0D008620D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		811D80872C128FCE008620D5 /* DamagochiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagochiCell.swift; sourceTree = "<group>"; };
 		811D80892C1293D8008620D5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		811D808B2C12A513008620D5 /* Extension-IdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-IdentifierProtocol.swift"; sourceTree = "<group>"; };
+		811D80902C12C54B008620D5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		811D80942C12D0B3008620D5 /* Helper-UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper-UserDefaults.swift"; sourceTree = "<group>"; };
+		811D80962C12D3D0008620D5 /* DamagochiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagochiDetailViewController.swift; sourceTree = "<group>"; };
+		811D80982C12E265008620D5 /* Helper-generateDamagochi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper-generateDamagochi.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,7 @@
 		811D80622C1283B0008620D5 /* damagochi */ = {
 			isa = PBXGroup;
 			children = (
+				811D808F2C12C52D008620D5 /* Model */,
 				811D80862C128FAA008620D5 /* View */,
 				811D807E2C128A35008620D5 /* VC */,
 				811D80792C1284FD008620D5 /* Lib */,
@@ -89,10 +98,12 @@
 		811D80792C1284FD008620D5 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				811D807A2C12851F008620D5 /* Extension-UI.swift */,
-				811D807C2C128754008620D5 /* Enum-Icons.swift */,
 				811D80842C128D0D008620D5 /* Constants.swift */,
+				811D807A2C12851F008620D5 /* Extension-UI.swift */,
 				811D808B2C12A513008620D5 /* Extension-IdentifierProtocol.swift */,
+				811D807C2C128754008620D5 /* Enum-Icons.swift */,
+				811D80942C12D0B3008620D5 /* Helper-UserDefaults.swift */,
+				811D80982C12E265008620D5 /* Helper-generateDamagochi.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -101,7 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				811D80672C1283B0008620D5 /* ViewController.swift */,
-				811D807F2C128A44008620D5 /* MainViewController.swift */,
+				811D807F2C128A44008620D5 /* DamagochiModalViewController.swift */,
+				811D80962C12D3D0008620D5 /* DamagochiDetailViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -112,6 +124,14 @@
 				811D80872C128FCE008620D5 /* DamagochiCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		811D808F2C12C52D008620D5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				811D80902C12C54B008620D5 /* UserDefaults.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,12 +212,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				811D80992C12E265008620D5 /* Helper-generateDamagochi.swift in Sources */,
 				811D80682C1283B0008620D5 /* ViewController.swift in Sources */,
+				811D80972C12D3D0008620D5 /* DamagochiDetailViewController.swift in Sources */,
 				811D80642C1283B0008620D5 /* AppDelegate.swift in Sources */,
 				811D808C2C12A513008620D5 /* Extension-IdentifierProtocol.swift in Sources */,
 				811D807D2C128754008620D5 /* Enum-Icons.swift in Sources */,
+				811D80952C12D0B3008620D5 /* Helper-UserDefaults.swift in Sources */,
 				811D80882C128FCE008620D5 /* DamagochiCell.swift in Sources */,
-				811D80802C128A44008620D5 /* MainViewController.swift in Sources */,
+				811D80802C128A44008620D5 /* DamagochiModalViewController.swift in Sources */,
+				811D80912C12C54B008620D5 /* UserDefaults.swift in Sources */,
 				811D80852C128D0D008620D5 /* Constants.swift in Sources */,
 				811D80662C1283B0008620D5 /* SceneDelegate.swift in Sources */,
 				811D807B2C12851F008620D5 /* Extension-UI.swift in Sources */,

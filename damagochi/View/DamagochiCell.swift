@@ -10,6 +10,8 @@ import SnapKit
 
 class DamagochiCell: UICollectionViewCell {
     
+    var data: Damagochi?
+    
     let cellBack = UIView()
     let cellImage = UIImageView()
     let cellLabel = UILabel()
@@ -29,12 +31,11 @@ class DamagochiCell: UICollectionViewCell {
         cellBack.addSubview(cellLabel)
         cellBack.snp.makeConstraints {v in
             v.top.horizontalEdges.equalToSuperview()
-            v.bottom.equalToSuperview().inset(12)
+            v.bottom.equalToSuperview().inset(16)
         }
         
         cellImage.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(4)
-            make.horizontalEdges.equalToSuperview().inset(4)
+            make.top.horizontalEdges.equalToSuperview().inset(12)
             make.bottom.equalToSuperview().inset(16)
             make.center.equalTo(cellBack)
         }
@@ -42,17 +43,24 @@ class DamagochiCell: UICollectionViewCell {
         cellLabel.snp.makeConstraints { make in
             make.top.equalTo(cellImage.snp.bottom).offset(12)
             make.horizontalEdges.equalToSuperview().inset(8)
+            make.height.equalTo(24)
         }
         
-        cellImage.image = UIImage(named: "1-1")
         cellImage.contentMode = .scaleAspectFill
         
-        cellLabel.font = UIFont._appSystemFontS
-        cellLabel.text = "adsafas"
+        cellLabel.font = .systemFont(ofSize: 10)
         cellLabel.textAlignment = .center
         cellLabel.textColor = UIColor._appSystemFontColor
         cellLabel.layer.borderWidth = 1
         cellLabel.layer.borderColor = UIColor._appSystemFontColor.cgColor
         cellLabel.layer.cornerRadius = 4
+    }
+    
+    func setData(_ cellData: Damagochi) {
+        data = cellData
+        if let data {
+            cellImage.image = UIImage(named: data.getDamagochiImage)
+            cellLabel.text = data.name
+        }
     }
 }

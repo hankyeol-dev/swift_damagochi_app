@@ -8,6 +8,8 @@
 import Foundation
 
 enum Icons: String {
+    case goBack = "arrow.left"
+    case userIcon = "person.circle"
     case eatWater = "drop.circle"
     case eatLeaf = "leaf.circle"
     case settingPencil = "pencil"

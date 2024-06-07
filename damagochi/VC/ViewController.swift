@@ -9,9 +9,8 @@ import UIKit
 import SnapKit
 
 class ViewController: UIViewController {
+    private var user: User?
     
-    let titleView = UIView()
-    let titleLabel = UILabel()
     let damagochiCollection = {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.width / 3 - 20
@@ -26,30 +25,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor._appBackGroundColor
-        configureTitleView()
+        title = "다마고치 선택하기"
+        
         configureDamagochiCollectionView()
+        getOrSaveUserData()
+        print(user)
     }
     
-    func configureTitleView() {
-        // add subview
-        view.addSubview(titleView)
-        titleView.addSubview(titleLabel)
-        
-        // layout
-        titleView.snp.makeConstraints { v in
-            v.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            v.height.equalTo(40)
-        }
-        titleLabel.snp.makeConstraints{ l in
-            l.edges.equalToSuperview().inset(8)
-        }
-        
-        // ui
-        titleLabel.text = Constants.mainTitle
-        titleLabel.font = UIFont._appSystemBoldFontL
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .center
-    }
     
     func configureDamagochiCollectionView() {
         view.addSubview(damagochiCollection)
@@ -58,22 +40,53 @@ class ViewController: UIViewController {
         damagochiCollection.dataSource = self
         damagochiCollection.register(DamagochiCell.self, forCellWithReuseIdentifier: DamagochiCell.identifier)
         damagochiCollection.snp.makeConstraints { c in
-            c.top.equalTo(titleView.snp.bottom).offset(16)
-            c.bottom.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            c.edges.equalTo(view.safeAreaLayoutGuide).inset(16)
         }
     }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        guard let user else { return 0}
+        return user.damagochies.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let user else { return UICollectionViewCell() }
         guard let cell = damagochiCollection.dequeueReusableCell(withReuseIdentifier: DamagochiCell.identifier, for: indexPath) as? DamagochiCell else { return UICollectionViewCell() }
+        
+        cell.setData(user.damagochies[indexPath.row])
         
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = DamagochiModalViewController()        
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: false)
+    }
+}
+
+extension ViewController {
+    func getOrSaveUserData() {
+        if findData(forKey: "user") {
+            decodeUserDefaults(forKey: "user")
+        } else {
+            saveData(data: User(damagochies: generateDamagochis()), forKey: "user")
+        }
+    }
     
+    func decodeUserDefaults(forKey: String){
+        if let savedData = UserDefaults.standard.object(forKey: forKey) {
+            let decoder = JSONDecoder()
+            if let decodedData = try? decoder.decode(User.self, from: savedData as! Data) {
+                user = decodedData
+            }
+        }
+    }
+    
+    func setUser() {
+        
+        
+    }
 }

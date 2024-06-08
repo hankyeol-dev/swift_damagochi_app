@@ -16,4 +16,6 @@ struct Constants {
     static let resetAlertTitle = "데이터 초기화"
     static let resetAlertMessage = "정말 다시 처음부터 시작하실 건가용?"
     static let damagochiState = ["-1", "-2", "-3", "-4", "-5", "-6", "-7", "-8", "-9"]
+    
+    static let damagochiMessages = ["밥을 주세요.", "물을 주세요.", "쑥쑥 레벨업하고 있어요. 고마워요."]
 }

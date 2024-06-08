@@ -25,13 +25,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor._appBackGroundColor
-        title = Constants.mainTitle
         
+        configureNav()
         configureDamagochiCollectionView()
         getOrSaveUser()
     }
     
 
+    func configureNav() {
+        title = Constants.mainTitle
+        navigationItem.leftBarButtonItem = nil
+        navigationItem.rightBarButtonItem = nil
+    }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -64,9 +69,9 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let vc = DamagochiModalViewController()
         
         if let user {
-            if user.damagochies[indexPath.row].isOpened {
-                vc.userName = user.name
-                vc.setData(user.damagochies[indexPath.row])
+            let dataSet = user.damagochies[indexPath.row]
+            if dataSet.isOpened {
+                vc.setData(dataSet.id)
                 vc.modalPresentationStyle = .overFullScreen
                 present(vc, animated: false)
             }

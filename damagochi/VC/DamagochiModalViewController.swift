@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class DamagochiModalViewController: UIViewController {
-    var userName: String?
+    var damagochiId: Int = 0
     var data: Damagochi?
     
     let backgroundView = UIView()
@@ -137,18 +137,17 @@ extension DamagochiModalViewController {
         modalStartButton.titleLabel?.font = UIFont._appSystemBoldFontM
         modalStartButton.layer.cornerRadius = 12
         modalStartButton.layer.maskedCorners = CACornerMask(arrayLiteral: .layerMaxXMaxYCorner)
-        modalStartButton.addTarget(self, action: #selector(goThatDetailPage), for: .touchUpInside)
+        modalStartButton.addTarget(self, action: #selector(onTouchStartButton), for: .touchUpInside)
     }
     
     @objc func dismissModal() {
         dismiss(animated: false)
     }
     
-    @objc func goThatDetailPage() {
+    @objc func onTouchStartButton() {
         let vc = DamagochiDetailViewController()
-        if let data, let userName {
-            vc.setData(name: userName, pageData: data)
-        }
+        vc.setData(damagochiId)
+        UserDefaultsHelper.selectDamagochiById(damagochiId)
         
         let navc = UINavigationController(rootViewController: vc)
         navc.modalPresentationStyle = .fullScreen
@@ -156,8 +155,9 @@ extension DamagochiModalViewController {
         present(navc, animated: false)
     }
     
-    func setData(_ cellData: Damagochi) {
-        data = cellData
+    func setData(_ id: Int) {
+        damagochiId = id
+        data = UserDefaultsHelper.getDamagochiById(damagochiId)
         
         if let data {
             modalImage.image = UIImage(named: data.getDamagochiImage)

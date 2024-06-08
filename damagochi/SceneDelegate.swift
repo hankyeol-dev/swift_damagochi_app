@@ -15,10 +15,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
+    
+//        let vc = UINavigationController(rootViewController: ViewController())
+//        window?.rootViewController = vc // entry view controller mapping
+
+        if UserDefaultsHelper.isSelectedDamagochi() == -1 {
+            let vc = UINavigationController(rootViewController: ViewController())
+            window?.rootViewController = vc // entry view controller mapping
+        } else {
+            let vc = DamagochiDetailViewController()
+            vc.damagochiId = UserDefaultsHelper.isSelectedDamagochi()
+            
+            let nav = UINavigationController(rootViewController: vc)
+            window?.rootViewController = nav
+        }
         
-        let entryVC = UINavigationController(rootViewController: ViewController())
-        
-        window?.rootViewController = entryVC // entry view controller mapping
         window?.makeKeyAndVisible() // show
     }
 

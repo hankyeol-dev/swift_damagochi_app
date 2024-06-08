@@ -35,11 +35,24 @@ class DamagochiDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        data = UserDefaultsHelper.getDamagochiById(damagochiId)
+        userName = UserDefaultsHelper.getUserName()
+        if let userName {
+            navigationItem.title = "\(userName)님의 다마고치"
+        }
+        
         configureNavigation()
         configureMainView()
         configureUI()
         configureLeaf()
         configureDrop()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        userName = UserDefaultsHelper.getUserName()
+        if let userName {
+            navigationItem.title = "\(userName)님의 다마고치"
+        }
     }
     
 }
@@ -103,7 +116,7 @@ extension DamagochiDetailViewController {
             talkBox.image = UIImage(named: "bubble")
             
             talkLabel.numberOfLines = 0
-            talkLabel.text = "dacasldcjlasdmvlasdhclamcasdlgjaslvjalsdkf"
+            talkLabel.text = generateRandomMessage()
             talkLabel.textAlignment = .center
             talkLabel.textColor = UIColor._appSystemFontColor
             talkLabel.font = UIFont._appSystemFontL
@@ -127,6 +140,10 @@ extension DamagochiDetailViewController {
             damagochiControlStack.spacing = 16
             damagochiControlStack.distribution = .equalSpacing
         }
+    }
+    
+    private func generateRandomMessage() -> String {
+        return Constants.damagochiMessages[Int.random(in: 0...Constants.damagochiMessages.count - 1)] + " \(userName ?? "")님"
     }
     
     
@@ -155,6 +172,8 @@ extension DamagochiDetailViewController {
         
         leafTexfield._setEatingField(" 밥주세용")
         leafButton._setEatingButton(" 밥주기")
+        leafButton.tag = 0
+        leafButton.addTarget(self, action: #selector(feed), for: .touchUpInside)
     }
     private func configureDrop() {
         damagochiControlStack.addArrangedSubview(controlBox2)
@@ -177,6 +196,8 @@ extension DamagochiDetailViewController {
         
         dropTextField._setEatingField(" 물주세용")
         dropButton._setEatingButton(" 물주기")
+        dropButton.tag = 1
+        dropButton.addTarget(self, action: #selector(feed), for: .touchUpInside)
     }
 }
 
@@ -184,14 +205,45 @@ extension DamagochiDetailViewController {
     // action
     @objc private func goSetting() {
         let vc = SettingViewController()
+        vc.damagochiId = self.damagochiId
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    func setData(name: String, pageData: Damagochi) {
-        userName = name
-        data = pageData
-        if let userName {
-            navigationItem.title = "\(userName)님의 다마고치"
-        }
+    func setData(_ id: Int) {
+        damagochiId = id
     }
+    
+    @objc private func feed(_ sender: UIButton) {
+        var amount = 0
+        
+        guard let text = sender.tag == 0 ? leafTexfield.text : dropTextField.text else { return }
+        
+        if text.isEmpty {
+            amount = 1
+            UserDefaultsHelper.updateDamagochiByFeed(damagochiId, type: sender.tag == 0 ? .leaf : .drop, amount: amount)
+            viewDidLoad()
+            return;
+        }
+        
+        guard let intString = Int(text)  else { return }
+        
+        if sender.tag == 0 {
+            if intString <= 0 || intString >= 100 {
+                leafTexfield.text = ""
+                return;
+            }
+            leafTexfield.text = ""
+        } else {
+            if intString <= 0 || intString >= 50 {
+                dropTextField.text = ""
+                return;
+            }
+            dropTextField.text = ""
+        }
+        
+        amount = intString
+        UserDefaultsHelper.updateDamagochiByFeed(damagochiId, type: .leaf, amount: amount)
+        viewDidLoad()
+    }
+    
 }

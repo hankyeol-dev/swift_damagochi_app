@@ -10,13 +10,14 @@ import UIKit
 
 struct User: Codable {
     var name: String = "대장"
-    let damagochies: [Damagochi]
+    var damagochies: [Damagochi]
 }
 
 struct Damagochi: Codable {
     let id: Int
     let name: String
     let descript: String
+    var isSelected: Bool = false
     var isOpened: Bool
     var lv: Int = 1
     var leaf: Int = 0

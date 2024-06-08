@@ -52,6 +52,7 @@ class Setting_ChangeNameViewController: UIViewController {
         if !text.isEmpty {
             UserDefaultsHelper.updateUserName(text)
         }
+        viewDidLoad()
     }
 }
 

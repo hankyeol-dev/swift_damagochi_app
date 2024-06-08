@@ -9,17 +9,17 @@ import UIKit
 import SnapKit
 
 class SettingViewController: UIViewController {
-    
+    var damagochiId = 0
     let settingTable = UITableView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureView()
         configureNav()
         configureTable()
     }
-
+    
 }
 
 extension SettingViewController {
@@ -29,7 +29,7 @@ extension SettingViewController {
         navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(systemName: Icons.goBack.rawValue), style: .plain, target: self, action: #selector(goBack)), animated: true)
         navigationItem.leftBarButtonItem?.tintColor = UIColor._appSystemFontColor
     }
-
+    
     private func configureView() {
         view.backgroundColor = UIColor._appBackGroundColor
         view.addSubview(settingTable)
@@ -38,10 +38,8 @@ extension SettingViewController {
             t.edges.equalToSuperview()
         }
     }
-      
-    @objc func goBack() {
-        navigationController?.popViewController(animated: true)
-    }
+    
+    
 }
 
 extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -69,6 +67,7 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == 0 {
             goToUpdateUserNameView()
         } else if indexPath.row == 1 {
+            UserDefaultsHelper.diSelectDamagochiById(damagochiId)
             goToDamagochiSelectView()
         } else {
             showAlert()
@@ -88,10 +87,14 @@ extension SettingViewController {
     }
     
     func goToDamagochiSelectView() {
-        navigationController?.pushViewController(ViewController(), animated: true)
+        navigationController?.pushViewController(ViewController(), animated: false)
     }
     
     func goToUpdateUserNameView() {
         navigationController?.pushViewController(Setting_ChangeNameViewController(), animated: true)
+    }
+    
+    @objc func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 }

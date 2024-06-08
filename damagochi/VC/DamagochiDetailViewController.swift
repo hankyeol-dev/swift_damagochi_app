@@ -30,11 +30,11 @@ class DamagochiDetailViewController: UIViewController {
     let controlBox2 = UIView()
     let dropTextField = UITextField()
     let dropButton = UIButton()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureNavigation()
         configureMainView()
         configureUI()
@@ -48,10 +48,7 @@ extension DamagochiDetailViewController {
     // configure
     private func configureNavigation() {
         view.backgroundColor = UIColor._appBackGroundColor
-        navigationItem.setLeftBarButton(UIBarButtonItem(image: UIImage(systemName: Icons.goBack.rawValue), style: .plain, target: self, action: #selector(goBack)), animated: true)
-        navigationItem.leftBarButtonItem?.tintColor = UIColor._appSystemFontColor
-        
-        navigationItem.setRightBarButton(UIBarButtonItem(image: UIImage(systemName: Icons.userIcon.rawValue), style: .plain, target: self, action: #selector(goBack)), animated: true)
+        navigationItem.setRightBarButton(UIBarButtonItem(image: UIImage(systemName: Icons.userIcon.rawValue), style: .plain, target: self, action: #selector(goSetting)), animated: true)
         navigationItem.rightBarButtonItem?.tintColor = UIColor._appSystemFontColor
     }
     
@@ -128,27 +125,11 @@ extension DamagochiDetailViewController {
             
             damagochiControlStack.axis = .vertical
             damagochiControlStack.spacing = 16
-            damagochiControlStack.distribution = .fillEqually
+            damagochiControlStack.distribution = .equalSpacing
         }
     }
     
-
-}
-
-extension DamagochiDetailViewController {
-    // actions
     
-    @objc private func goBack() {
-        dismiss(animated: false)
-    }
-    
-    func setData(name: String, pageData: Damagochi) {
-        userName = name
-        data = pageData
-        if let userName {
-            navigationItem.title = "\(userName)님의 다마고치"
-        }
-    }
 }
 
 extension DamagochiDetailViewController {
@@ -196,5 +177,21 @@ extension DamagochiDetailViewController {
         
         dropTextField._setEatingField(" 물주세용")
         dropButton._setEatingButton(" 물주기")
+    }
+}
+
+extension DamagochiDetailViewController {
+    // action
+    @objc private func goSetting() {
+        let vc = SettingViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func setData(name: String, pageData: Damagochi) {
+        userName = name
+        data = pageData
+        if let userName {
+            navigationItem.title = "\(userName)님의 다마고치"
+        }
     }
 }

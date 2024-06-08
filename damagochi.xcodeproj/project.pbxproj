@@ -21,10 +21,14 @@
 		811D80882C128FCE008620D5 /* DamagochiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80872C128FCE008620D5 /* DamagochiCell.swift */; };
 		811D808A2C1293D8008620D5 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 811D80892C1293D8008620D5 /* .gitignore */; };
 		811D808C2C12A513008620D5 /* Extension-IdentifierProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D808B2C12A513008620D5 /* Extension-IdentifierProtocol.swift */; };
-		811D80912C12C54B008620D5 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80902C12C54B008620D5 /* UserDefaults.swift */; };
+		811D80912C12C54B008620D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80902C12C54B008620D5 /* User.swift */; };
 		811D80952C12D0B3008620D5 /* Helper-UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80942C12D0B3008620D5 /* Helper-UserDefaults.swift */; };
 		811D80972C12D3D0008620D5 /* DamagochiDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80962C12D3D0008620D5 /* DamagochiDetailViewController.swift */; };
 		811D80992C12E265008620D5 /* Helper-generateDamagochi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 811D80982C12E265008620D5 /* Helper-generateDamagochi.swift */; };
+		814269B62C13B4E400C75A63 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814269B52C13B4E400C75A63 /* SettingViewController.swift */; };
+		814269B82C13BB9200C75A63 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814269B72C13BB9200C75A63 /* SettingCell.swift */; };
+		814269BA2C13D6D000C75A63 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814269B92C13D6D000C75A63 /* Setting.swift */; };
+		814269BC2C13FC3000C75A63 /* Setting-ChangeNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 814269BB2C13FC3000C75A63 /* Setting-ChangeNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,10 +47,14 @@
 		811D80872C128FCE008620D5 /* DamagochiCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagochiCell.swift; sourceTree = "<group>"; };
 		811D80892C1293D8008620D5 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		811D808B2C12A513008620D5 /* Extension-IdentifierProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension-IdentifierProtocol.swift"; sourceTree = "<group>"; };
-		811D80902C12C54B008620D5 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		811D80902C12C54B008620D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		811D80942C12D0B3008620D5 /* Helper-UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper-UserDefaults.swift"; sourceTree = "<group>"; };
 		811D80962C12D3D0008620D5 /* DamagochiDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamagochiDetailViewController.swift; sourceTree = "<group>"; };
 		811D80982C12E265008620D5 /* Helper-generateDamagochi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper-generateDamagochi.swift"; sourceTree = "<group>"; };
+		814269B52C13B4E400C75A63 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		814269B72C13BB9200C75A63 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
+		814269B92C13D6D000C75A63 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		814269BB2C13FC3000C75A63 /* Setting-ChangeNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Setting-ChangeNameViewController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,8 @@
 				811D80672C1283B0008620D5 /* ViewController.swift */,
 				811D807F2C128A44008620D5 /* DamagochiModalViewController.swift */,
 				811D80962C12D3D0008620D5 /* DamagochiDetailViewController.swift */,
+				814269B52C13B4E400C75A63 /* SettingViewController.swift */,
+				814269BB2C13FC3000C75A63 /* Setting-ChangeNameViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -122,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				811D80872C128FCE008620D5 /* DamagochiCell.swift */,
+				814269B72C13BB9200C75A63 /* SettingCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -129,7 +140,8 @@
 		811D808F2C12C52D008620D5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				811D80902C12C54B008620D5 /* UserDefaults.swift */,
+				811D80902C12C54B008620D5 /* User.swift */,
+				814269B92C13D6D000C75A63 /* Setting.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -217,11 +229,15 @@
 				811D80972C12D3D0008620D5 /* DamagochiDetailViewController.swift in Sources */,
 				811D80642C1283B0008620D5 /* AppDelegate.swift in Sources */,
 				811D808C2C12A513008620D5 /* Extension-IdentifierProtocol.swift in Sources */,
+				814269B62C13B4E400C75A63 /* SettingViewController.swift in Sources */,
+				814269BA2C13D6D000C75A63 /* Setting.swift in Sources */,
 				811D807D2C128754008620D5 /* Enum-Icons.swift in Sources */,
+				814269BC2C13FC3000C75A63 /* Setting-ChangeNameViewController.swift in Sources */,
 				811D80952C12D0B3008620D5 /* Helper-UserDefaults.swift in Sources */,
+				814269B82C13BB9200C75A63 /* SettingCell.swift in Sources */,
 				811D80882C128FCE008620D5 /* DamagochiCell.swift in Sources */,
 				811D80802C128A44008620D5 /* DamagochiModalViewController.swift in Sources */,
-				811D80912C12C54B008620D5 /* UserDefaults.swift in Sources */,
+				811D80912C12C54B008620D5 /* User.swift in Sources */,
 				811D80852C128D0D008620D5 /* Constants.swift in Sources */,
 				811D80662C1283B0008620D5 /* SceneDelegate.swift in Sources */,
 				811D807B2C12851F008620D5 /* Extension-UI.swift in Sources */,

@@ -12,7 +12,11 @@ enum Icons: String {
     case userIcon = "person.circle"
     case eatWater = "drop.circle"
     case eatLeaf = "leaf.circle"
-    case settingPencil = "pencil"
+    case goRight = "chevron.right"
+}
+
+enum SettingIcons: String {
+    case pencil = "pencil"
     case moon = "moon.fill"
     case arrow = "arrow.clockwise"
 }

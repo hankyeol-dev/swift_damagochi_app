@@ -25,14 +25,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor._appBackGroundColor
-        title = "다마고치 선택하기"
+        title = Constants.mainTitle
         
         configureDamagochiCollectionView()
-        getOrSaveUserData()
+        getOrSaveUser()
     }
     
-    
-    
+
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -48,7 +47,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let user else { return 0}
+        guard let user else { return 0 }
         return user.damagochies.count
     }
     
@@ -76,21 +75,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 }
 
 extension ViewController {
-    func getOrSaveUserData() {
-        if findData(forKey: "user") {
-            decodeUserDefaults(forKey: "user")
-        } else {
-            saveData(data: User(damagochies: generateDamagochis()), forKey: "user")
-        }
+    func getOrSaveUser() {
+        user = UserDefaultsHelper.findOrSaveUserData(damagochies: generateDamagochis())
     }
-    
-    func decodeUserDefaults(forKey: String){
-        if let savedData = UserDefaults.standard.object(forKey: forKey) {
-            let decoder = JSONDecoder()
-            if let decodedData = try? decoder.decode(User.self, from: savedData as! Data) {
-                user = decodedData
-            }
-        }
-    }
-
 }
